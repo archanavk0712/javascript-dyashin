@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="form">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="address">Address</label>
+      <input type="text" name="address" id="address" />
+
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" />
+      <p id="error">Name cannot be empty</p>
+      <button type="submit" id="submit">Submit</button>
+
+      <p>The user details are</p>
+      <div id="output"></div>
+    </form>
+
+    <script>
+      const submitBtn = document.getElementById("submit");
+
+      const errorVal = document.getElementById("error");
+
+      errorVal.style.color = "red";
+      errorVal.style.display = "none";
+
+      submitBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const nameVal = document.getElementById("name").value;
+
+        if (nameVal === "") {
+          errorVal.innerHTML = "Name cannot be empty";
+          errorVal.style.display = "block";
+          return;
+        }
+        errorVal.style.display = "none";
+        const addressVal = document.getElementById("address").value;
+        const ageVal = document.getElementById("age").value;
+
+        if (Number(ageVal) < 18) {
+          errorVal.innerHTML = "Must be 18 or above";
+          errorVal.style.display = "block";
+          return;
+        }
+        errorVal.style.display = "none";
+
+        document.getElementById("output").innerHTML = `<p>Name: ${nameVal}</p>
+        <p>Address: ${addressVal}</p>
+        <p>Age: ${ageVal}</p>`;
+      });
+    </script>
+  </body>
+</html>

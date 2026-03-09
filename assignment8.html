@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <style>
+        #nameReq, #invalidName,#phoneReq,#invalidPhone{
+            color: red;
+            font-size: x-small;
+            display: none;
+        }  
+    </style>
+</head>
+<body onload="add()">
+
+    <nav class="navbar navbar-expand-lg navbar bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">My App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+   
+        <form style="width: 90%; margin: 5vh;" class="border border-black rounded-3 p-3" name="loginForm">
+            <div class="mb-3">
+                <label for="disabledTextInput" class="form-label" for="name">Name</label>
+                <input type="text" id="disabledTextInput" class="form-control"  name="name" id="name" placeholder="Enter name">
+                <p id="nameReq">Name field is required</p>
+                <p id="invalidName">Invalid Name</p>
+            </div>
+            <div class="mb-3">
+                <label for="disabledSelect" class="form-label" for="phone">Phone number</label>
+                <input type="text" id="disabledTextInput" class="form-control" name="phone" id="phone" placeholder="Enter phone no.">
+                <p id="phoneReq">Phone number field is required</p>
+                <p id="invalidPhone">Invalid Phone Number</p>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        </form>
+
+        <div class="mt-4">
+            <table class="table table-success table-striped">
+                <thread>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>Phone Number</th>
+                    </tr>
+
+                </thread>
+                <tbody id="dataTable"></tbody>
+            </table>
+            </div>
+
+    <script>
+        let subBtn=document.getElementById("submitBtn")
+        let contacts = [];
+
+        subBtn.addEventListener("click",(event)=>{
+            event.preventDefault()
+            let form=document.forms["loginForm"]
+            let nameVal=form.name.value
+            let phoneVal=form.phone.value
+            
+            
+            
+            let isNameValid=validateName(nameVal)
+            let isPhoneValid=validatePhone(phoneVal)
+            if(isNameValid && isPhoneValid){
+                alert("Form submitted successfully")
+                let p={name:nameVal, phone:phoneVal}
+                contacts.push(p)
+                localStorage.setItem("contacts",JSON.stringify(contacts))
+                add();
+            }
+        })
+
+        function add(){
+            let getdata=localStorage.getItem("contacts")
+
+            if(getdata!=null){
+                let getarray=JSON.parse(getdata)
+
+                let table=document.getElementById("dataTable")
+
+                getarray.map(data=>{
+                    let row=document.createElement("tr")
+                    row.innerHTML=`<td>${data.name}</td>
+                                <td>${data.phone}</td>`  
+                    table.appendChild(row)  
+                })
+            }
+        }
+
+
+        function validateName(nameVal){
+            let nameReq=document.getElementById("nameReq")
+            let invalidName=document.getElementById("invalidName")
+
+            if(!nameVal){
+                
+                nameReq.style.display="block"
+                invalidName.style.display="none"
+                return false
+            }else if(!/^[A-Za-z ]+$/.test(nameVal)){
+                invalidName.style.display="block"
+                nameReq.style.display="none"
+                return false
+            }
+            invalidName.style.display="none"
+            nameReq.style.display="none"
+            return true
+        }
+
+        function validatePhone(phoneVal){
+            let phoneReq=document.getElementById("phoneReq")
+            let invalidPhone=document.getElementById("invalidPhone")
+
+            if(!phoneVal){
+                phoneReq.style.display="block"
+                invalidPhone.style.display="none"
+                return false
+            }else if(!/^\d{10}$/.test(phoneVal)){
+                invalidPhone.style.display="block"
+                phoneReq.style.display="none"
+                return false
+            }
+            invalidPhone.style.display="none"
+            phoneReq.style.display="none"
+            return true
+        }
+    </script>
+</body>
+</html>

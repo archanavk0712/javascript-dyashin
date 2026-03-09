@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="greet">Welcome to events</h1>
+    <button onclick="hideText()">Hide text</button>
+    <button onclick="showText()">Show text</button>
+    <button onclick="hideshowText()">Hide/Show Text</button>
+    <button id="hideshoww">Add event Listener</button>
+    <script>
+        let greetEle = document.getElementById("greet")
+        function hideText(){
+            greetEle.style.display = "none";
+        }
+        function showText(){
+            greetEle.style.display = "block";
+        }
+        function hideshowText(){
+            if (greetEle.style.display === "none") {
+            greetEle.style.display = "block"; 
+            } else {
+                greetEle.style.display = "none"; 
+            }
+        }
+        let hideshow = document.getElementById("hideshoww")
+        hideshow.addEventListener("click",()=>{
+            console.log("This is click addeventlistener");
+            
+        })
+        hideshow.addEventListener("mouseover",()=>{
+            console.log("Hovering in mouse");
+            
+        })
+    </script>
+</body>
+</html>

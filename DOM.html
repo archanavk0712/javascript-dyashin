@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class1{
+            color: red;
+        }
+        .class2{
+            background-color: aqua;
+        }
+        .class3{
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="greet">Welcome to DOM class</h1>
+
+    <div class="fruits">Apple</div>
+    <div class="fruits">Mango</div>
+    <div class="fruits">Orange</div>
+    <div class="fruits">Guava</div>
+
+    <div id="newdiv"></div>
+
+    <p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae dolores consequuntur in minima sapiente! Velit sequi vitae repellat delectus amet nemo quo similique. Quisquam quae corrupti dignissimos inventore consectetur quidem!</p>
+    <script>
+        //document.getElementById
+        //getElementByClassName
+        //getElementByTagName
+        //querySelector
+        //querySelectorAll
+
+        let greetEle = document.getElementById("greet");
+        console.log(greetEle);
+
+        greetEle.style.color = "blue"
+        greetEle.style.fontSize = "100px";
+
+        let fruitEle = document.getElementsByClassName("fruits");
+        console.log(fruitEle);
+
+        fruitEle[0].style.color = "red";
+        fruitEle[3].style.color = "green";
+
+        let divEle = document.getElementsByTagName("div");
+        console.log(divEle);
+
+        let qs1 = document.querySelector(".fruits") //targets first class with the same class names
+        console.log(qs1);
+
+        let qs2 = document.querySelectorAll(".fruits")//targets all the class with the same class names.
+        console.log(qs1);
+
+        greetEle.innerText = "This is inner text"
+        greetEle.innerHTML = "<h6>This is inner HTML</h6>"
+
+
+        let p1 = document.getElementById("p1");
+        p1.classList = "class1"
+        p1.classList.add("class2")
+
+        p1.classList.remove("class2")
+
+
+
+        let newEle = document.createElement("any");
+        console.log(newEle);
+        newEle.innerText = "This is new Element"
+
+        document.body.append(newEle);
+
+        document.getElementById("newdiv").appendChild(newEle);
+    </script>
+</body>
+</html>

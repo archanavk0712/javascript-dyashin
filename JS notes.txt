@@ -1,0 +1,285 @@
+                                                                    JAVA SCRIPT
+
+-JS is synchronized, reads line by line
+-JS was introduced by Brendan Rich in the year 1995
+-JS follows ECMA script
+-1st version of ECMA script(called as ES1) was introduced in the year 1997
+-Current ES15
+
+JS is a scripting as well as an programming language
+
+Browser understand JS with the help of JS engines.
+
+Browser	Name of JavaScript Engine
+Google Chrome-V8
+Edge (Internet Explorer)-Chakra
+Mozilla Firefox-Spider Monkey
+Safari-JavaScript Core Web kit
+
+-ECMA - is a set of rules and regulations for JS
+-JS was introduced by Brendan Rich in the year 1995
+-JS follows ECMA script
+-1st version of ECMA script(called as ES1) was introduced in the year 1997
+-Current ES15
+
+Data types is JS
+
+1. Primitive
+-String
+-Boolean
+-Num
+-Undefined
+-Null
+-Symbol
+-BigInt
+
+2. Reference Datatype
+-Objects
+-Arrays
+-Functions
+
+Operators in JS:
+=== -->strictly compares the values and datatypes
+==  -->only compares the values without datatypes 
+-Arithmetic: +,-,*,/,%,**,++,--
+-Assignment: =,+=,-=,*=,/=,%=,**=
+-String: +
+-Comparison: <,>,>=,<=,==,!=
+-Identity: ===
+-Logical: ||, &&, !
+-Bitwise: &, |, ~, ^, <<,>>,>>>
+
+ternary operator:
+syntax: condition?Statement1:Statement2;
+
+for of loop: for getting elements(it is only for array elements)
+for in loop: for getting index 
+
+
+Functions in JavaScript: There are 4 types
+- Named
+- Anonymous
+- IIFE-Immediate invoked function expression
+- Arrow
+
+Hoisting: Hoisting in JavaScript is a behavior where declarations of variables, functions, and classes are conceptually moved to the top of their respective scopes during the compilation phase, before the code execution begins. 
+This allows for the use of these declared entities before their actual appearance in the code. 
+Hoisting is happens in var, let and const.
+
+Temporal Dead Zone (TDZ): It refers to the time between the entering of a block and the point where a let or const variable is declared and initialized. 
+Accessing a variable in this 'dead zone' throws a reference error, even though the variableis technically in scope.
+During the TDZ the JS engine knowws the variable exists but you can't access it until the actual line of decaration is evaluated.
+
+
+var
+-functional scope
+-can be reassigned and redeclared
+-var is hoisted and initialized to undefined(says 'undefined' if variable accesed before initialization)
+
+let
+-block scope
+-can be reassigned and cannot be redeclared
+-gets error if variable accesed before initialization
+-let is hoisted but not initialized(get reference error if variable accesed before initialization)
+
+const
+-block scope
+-cannot be reassigned and cannot be redeclared
+-const is hoisted but not initialized(get reference error if variable accesed before initialization)
+
+Destructuring
+The destructuring assignment syntax unpack/extracting object properties into variables:
+Ex: let {firstName, lastName} = person;
+
+It can also unpack arrays and any other iterables:
+Ex: let [firstName, lastName] = person;
+
+Object Destructuring
+Example: //Create an Object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50
+};
+// Destructuring
+let {firstName, lastName} = person;
+
+String Methods:
+
+length                              -> Used to determine the number of characters in a string. It is a property of the String object, not a method. 
+charAt(index)                       -> Returns the character at the specified index. Does not support negative indices
+at(index)                           -> Returns the character at the specified index. Supports negative indices to count from the end of the string.
+concat(string1, string2, ...)       -> Joins two or more strings.
+toUpperCase()                       -> Converts the string to lowercase.
+toLowerCase()                       -> Converts the string to uppercase.
+indexOf(searchValue, fromIndex)     -> Returns the index of the first occurrence of searchValue within the string, or -1 if not found.
+lastIndexOf(searchValue, fromIndex) -> Returns the index of the last occurrence of searchValue.
+slice(startIndex, endIndex)         -> Extracts a part of the string from startIndex (inclusive) to endIndex (exclusive) and returns a new string.
+subString(startIndex, endIndex)     -> Similar to slice(), but handles arguments differently (e.g., swaps them if startIndex is greater than endIndex).
+substr(startIndex, length)          -> Extracts a specified length of characters starting from startIndex.
+trim()                              -> Removes whitespace from both ends of a string.
+trimStart()                         -> Removes whitespace from the beginning
+trimEnd()                           -> Removes whitespace from the end
+padStart(targetLength, padString);  -> It pads the beginning of a string with a specified padString until the string reaches a targetLength.
+padEnd(targetLength, padString);    -> It pads the end of a string with a specified padString until the string reaches a targetLength.
+replace(pattern, replacement)       -> Replaces the first occurrence of pattern with replacement.
+replaceAll(pattern, replacement)    -> Replaces all occurrences of pattern with replacement.
+includes(searchValue, fromIndex)    -> Returns true if the string contains searchValue, otherwise false.
+startsWith(searchValue, position)   -> Returns true if the string starts with searchValue.
+endsWith(searchValue, length)       -> Returns true if the string ends with searchValue.
+split(separator, limit)             -> Divides a string into an ordered list of substrings and returns them as an array.
+repeat(count)                       -> Returns a new string consisting of the original string repeated count times.
+
+Shallow copy:
+It copies only the top level of the object.A shallow copy creates a new object or array, but only copies the top-level properties. 
+If any of these properties are references to other objects or arrays (i.e., nested data structures), only the references are copied, not the actual nested objects themselves. 
+This means that both the original and the copied object/array will point to the same nested objects. 
+We can even use slice() to make a shallow copy
+Syntax: {...objName};     //spreadOperator
+Ex:
+    cconst array1 = ['a', 'b'];
+    const array2 = ['c', 'd'];
+    const combinedArray = [...array1, ...array2, 'e'];
+
+console.log(combinedArray); // Output: ['a', 'b', 'c', 'd', 'e']
+
+Deep copy:
+A deep copy creates a completely independent copy of the original object or array, including all nested objects and arrays. 
+This means that a new instance is created for every level of the data structure, ensuring no shared references between the original and the copy
+
+Method to achieve deep copy
+stringify(): Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
+parse(): Converts a JavaScript Object Notation (JSON) string into an object.
+Ex: JSON.parse(JSON.stringify(person));
+
+Rest Operator:
+The rest operator enables functions to accept a variable number of arguments, bundling them into an array within the function's scope. 
+This makes functions more flexible and capable of handling diverse inputs.
+Ex:
+    function add(...num){
+    console.log(num);
+
+    let sum=0;
+    for(let i of num){
+        sum+=i;
+    }
+    return sum;
+    }
+    console.log("add",add(12,34,54,2,53,54,2,5,64,76));  //add 356
+
+    
+Array methods:
+
+
+Local storage:permanent / till it expires
+setItem, getItem, clear, removeItem
+
+Session storage: temporary
+setItem, getItem, clear, removeItem
+
+Promise:
+Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It acts as a placeholder for a value that may not be available yet but will be resolved or rejected in the future. 
+
+States of a Promise:
+A Promise can be in one of three states:
+- Pending: The initial state, where the asynchronous operation is still in progress and has not yet completed or failed.
+- Fulfilled (Resolved): The operation completed successfully, and the Promise now holds the resulting value.
+- Rejected: The operation failed, and the Promise holds the reason for the failure (an error).
+
+Consuming Promises:
+You can consume the result of a Promise using the .then() and .catch() methods:
+- .then(onFulfilled, onRejected): This method allows you to attach callbacks for when the Promise is fulfilled or rejected.
+    onFulfilled: A function that executes if the Promise is fulfilled, receiving the resolved value as an argument.
+    onRejected: An optional function that executes if the Promise is rejected, receiving the rejection reason as an argument.
+- .catch(onRejected): This is a shorthand for .then(null, onRejected) and is commonly used for handling errors (rejections) at the end of a Promise chain.
+
+Promise methods:
+Name	Description
+- Promise.all() : Returns a single Promise from a list of promises
+    When all promises fulfill
+- Promise.allSettled() :	Returns a single Promise from a list of promises
+    When all promises sette
+- Promise.any() :   Returns a single Promise from a list of promises
+    When any promise fulfills
+- Promise.race() :  Returns a single Promise from a list of promises
+    When the faster promise settles
+- Promise.reject() :	Returns a Promise object rejected with a value
+- Promise.resolve(): 	Returns a Promise object resolved with a value
+- catch() :	Provides a function to be called when a promise is rejected
+- finally() :	Provides a function to be called when a promise is fulfilled or rejected
+- then() :	Provide two functions to be called when a promise is fulfilled or rejected
+
+Example:promises
+function login(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            console.log("User logged in")
+            resolve("user123");
+        }, 1000)
+    })
+}
+
+
+function fecthorders(users){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            console.log("Orders fetched sucessfully")
+            resolve(["order1", "order2"]);
+        }, 1000)
+    })
+}
+
+function payment(order){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            console.log("Payment details fetched")
+            resolve("Payment sucessful")
+        }, 1000)
+    })
+}
+
+login()
+    .then(user=> fecthorders(user))
+    .then(order=>payment(order))
+    .then(payment=>console.log(payment))
+    .catch(error=>console.log(error))
+
+Example :Async and await
+
+async function userDetails(){
+    try{
+    const user = await login();
+    const order= await fecthorders(user);
+    const paymentStatus= await payment(order);
+    console.log(paymentStatus)
+}catch(error)
+{    console.log(error)
+}
+}
+userDetails();
+
+Async and Await:
+Async and Await in JavaScript are used to simplify handling asynchronous operations using promises. By enabling asynchronous code to appear synchronous, they enhance code readability and make it easier to manage complex asynchronous flows.
+
+Async Function
+The async function allows us to write promise-based code as if it were synchronous. This ensures that the execution thread is not blocked. Async functions always return a promise. If a value is returned that is not a promise, JavaScript automatically wraps it in a resolved promise.
+Syntax:
+async function myFunction() {
+  return "Hello";
+}
+
+Await Keyword
+The await keyword is used to wait for a promise to resolve. It can only be used within an async block. Await makes the code wait until the promise returns a result, allowing for cleaner and more manageable asynchronous code.
+
+Error Handling in Async/Await
+JavaScript provides predefined arguments for handling promises: resolve and reject.
+
+resolve: Used when an asynchronous task is completed successfully.
+reject: Used when an asynchronous task fails, providing the reason for failure.2
+
+Case Conventions:
+camelCase: countrySpain      -> variables, function names
+PascalCase: CountrySpain     -> react components and file names
+snake_case: country_spain    -> class names
+kebab-case: country-spain    -> URL path name
+

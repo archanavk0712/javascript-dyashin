@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        let num=(no)=>{
+            return new Promise((resolve, request)=>{
+                if(no>0){
+                    resolve("It is a positive number")
+                }else if(no<0){
+                    request("It is a negative number")
+                }else if(no==0){
+                    request("It is a zero")
+                }
+            })
+        }
+
+            num(9).then((message)=>console.log(message))
+            .catch((error)=>console.log(error))
+            .finally(()=>console.log("Promise completed"))
+    </script>
+</body>
+</html>
